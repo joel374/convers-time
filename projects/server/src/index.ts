@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import express from "express"
 import { router as userRouter } from "./routers/userRouters"
+import { router as chatRouter } from "./routers/chatRouter"
 
 const prisma = new PrismaClient()
 const app = express()
@@ -15,5 +16,6 @@ app.get("/", async (req, res) => {
 })
 
 app.use("/users", userRouter)
+app.use("/chats", chatRouter)
 
 app.listen(port, () => console.log(`API RUNNING AT ${port} ✅`))
